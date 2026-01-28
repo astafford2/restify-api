@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^17.2.3",
+    "mysql2": "^3.16.2",
     "restify": "^11.1.0",
     "restify-router": "^0.6.2"
   }
