@@ -35,7 +35,23 @@ module.exports = {
 
                    res.json(result);
                    next();
-                })
+                });
+            });
+        }
+        else {
+            res.send(400, {message: 'Parameter id is required'});
+        }
+    },
+    getBinContents(req, res, next) {
+        bin_id = req.params.id;
+        if (bin_id) {
+            mysqlConnection((conn) => {
+                conn.query(`SELECT * FROM storage_bins JOIN bin_contents ON storage_bins.id = bin_id WHERE id = ?`, [bin_id], (err, result, fields) => {
+                    if (err) throw err;
+                    
+                    res.json(result);
+                    next();
+                });
             });
         }
         else {
